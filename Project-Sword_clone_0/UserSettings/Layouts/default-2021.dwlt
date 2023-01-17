@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 49
+  controlID: 27
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -120,14 +120,14 @@ MonoBehaviour:
     y: 572
     width: 1531
     height: 375
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 13}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 13}
   - {fileID: 18}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -346,22 +346,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\Unity-Projects\Project-Sword_GitRep\Project-Sword_clone_0
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e2710000
-    m_LastClickedID: 29154
-    m_ExpandedIDs: 00000000e2710000e4710000e671000000ca9a3b
+    m_SelectedIDs: b0720000
+    m_LastClickedID: 29360
+    m_ExpandedIDs: 000000008c7200008e7200009072000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -389,7 +389,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2710000e4710000e6710000
+    m_ExpandedIDs: 000000008c7200008e72000090720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -517,9 +517,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 90a0ffff
       m_LastClickedID: 0
-      m_ExpandedIDs: 1a63ffff3c69ffff3a6afffff06dffffb86effff6c71ffff3275ffff0878fffffacdffff00fbffff
+      m_ExpandedIDs: 9ca0ffffc2a0ffff44a1ffff70abffff78abffff2cf0ffff2ef5ffff94f7ffff6ef8ffff8efaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -768,9 +768,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.6222363, y: -5.4388695, z: -84.79822}
+    m_Target: {x: -1.0221953, y: -4.5916452, z: 34.92607}
     speed: 2
-    m_Value: {x: 3.6222363, y: -5.4388695, z: -84.79822}
+    m_Value: {x: -1.0221953, y: -4.5916452, z: 34.92607}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -817,13 +817,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.02102021, y: -0.96589035, z: 0.08308665, w: 0.24436148}
+    m_Target: {x: -0.18215047, y: 0.037759274, z: -0.0069999746, w: -0.9825221}
     speed: 2
-    m_Value: {x: 0.021020189, y: -0.96588945, z: 0.083086565, w: 0.24436124}
+    m_Value: {x: -0.18215019, y: 0.037759215, z: -0.006999964, w: -0.9825205}
   m_Size:
-    m_Target: 35.88542
+    m_Target: 15.9889345
     speed: 2
-    m_Value: 35.88542
+    m_Value: 15.9889345
   m_Ortho:
     m_Target: 0
     speed: 2
