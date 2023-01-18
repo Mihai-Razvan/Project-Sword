@@ -20,4 +20,9 @@ public class PlayerUI : MonoBehaviour       //this is attached to player prefab 
         playerNameText.text = playerData.getPlayerName();
         playerHealthImage.fillAmount = playerData.getPlayerHealth() / 100;
     }
+
+    public void updateUI()
+    {
+        playerHealthImage.fillAmount = (float) playerData.getPlayerHealth() / 100;
+    }
 }

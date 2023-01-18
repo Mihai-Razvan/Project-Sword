@@ -35,4 +35,11 @@ public class PlayerData : MonoBehaviourPunCallbacks
     {
         return int.Parse(dataHashTable["PlayerHealth"].ToString());
     }
+
+    public void changePlayerHealth(int val)
+    {
+        Debug.Log("change health");
+        dataHashTable["PlayerHealth"] = (int) dataHashTable["PlayerHealth"] + val;
+        this.gameObject.transform.Find("Canvas").gameObject.GetComponent<PlayerUI>().updateUI();
+    }
 }

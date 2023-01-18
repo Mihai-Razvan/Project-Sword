@@ -262,9 +262,10 @@ GameObject:
   - component: {fileID: 393313130966445930}
   - component: {fileID: 1605455116487745249}
   - component: {fileID: 6780967524368898548}
+  - component: {fileID: 8243535840066044680}
   - component: {fileID: 6652646837801679752}
   - component: {fileID: 3092235926079601359}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +365,22 @@ MonoBehaviour:
   detectionCapsuleLength: 5
   detectionCapsuleRadius: 0.5
   handTransform: {fileID: 8968208378934133489}
-  stonePrefab: {fileID: 4761830331957876040, guid: d81f0e83e5d2ff6499c8de988ed23045, type: 3}
+  rockPrefab: {fileID: 4761830331957876040, guid: f03a7349f9daef844aa61535a508b1b5, type: 3}
+--- !u!114 &8243535840066044680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393313130966445931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a405258f3c8b80e42b595e20d6a41341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 6652646837801679752}
+  hand: {fileID: 5941642246116745714}
+  throwRockPrefab: {fileID: 4761830331957876040, guid: fb1fcf6eb6732c749be6fa1a45413514, type: 3}
 --- !u!114 &6652646837801679752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,7 +713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941642246116745714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.313, y: -0.61, z: 1.509}
+  m_LocalPosition: {x: 0.05, y: -0.61, z: 1.509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

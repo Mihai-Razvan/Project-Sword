@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
-public class PickItem : MonoBehaviour
+public class PickItem : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     [SerializeField] PhotonView view;
 
@@ -12,7 +13,7 @@ public class PickItem : MonoBehaviour
     [SerializeField] float detectionCapsuleLength;
     [SerializeField] float detectionCapsuleRadius;
     [SerializeField] Transform handTransform;
-    [SerializeField] GameObject stonePrefab;
+    [SerializeField] GameObject rockPrefab;
 
     void Start()
     {
@@ -33,16 +34,45 @@ public class PickItem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && colliders.Length != 0)
         {
-            view.RPC("DestroyCollectedItemRPC", RpcTarget.MasterClient, colliders[0].gameObject.GetComponent<PhotonView>().ViewID);
-            GameObject spawnedObject = PhotonNetwork.Instantiate(stonePrefab.name, handTransform.position, Quaternion.identity);
-            spawnedObject.transform.SetParent(handTransform);
+            pickCollectedItem(colliders[0].gameObject.GetComponent<PhotonView>().ViewID);
         }
     }
 
-    [PunRPC]
-    void DestroyCollectedItemRPC(int id)
+    void pickCollectedItem(int itemId)
     {
-        if(PhotonView.Find(id) != null)       //we need to do this check because the object might get destroyed during propagation
-            PhotonNetwork.Destroy(PhotonView.Find(id));
+        object[] data = new object[]
+            {
+                view.ViewID, itemId           //view.ViewId is the playerId
+            };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions
+        {
+            Receivers = ReceiverGroup.All,
+            CachingOption = EventCaching.AddToRoomCache
+        };
+
+        ExitGames.Client.Photon.SendOptions sendOptions = new ExitGames.Client.Photon.SendOptions
+        {
+            Reliability = true
+        };
+
+        PhotonNetwork.RaiseEvent(EventsList.COLLECT_ITEM, data, raiseEventOptions, sendOptions);
+    }
+
+    public void OnEvent(ExitGames.Client.Photon.EventData eventData)
+    {
+        if (eventData.Code == EventsList.COLLECT_ITEM)
+        {
+            object[] data = (object[])eventData.CustomData;
+
+            if(PhotonView.Find((int) data[1]) != null)       //we need to check because the object could get destroyed during propagation
+                Destroy(PhotonView.Find((int) data[1]).gameObject);
+
+            if(PhotonView.Find((int)data[0]) != null && (int) data[0] == view.ViewID)      //we need to check for null because the player could leave room during propagation
+            {
+                GameObject spawnedObject = Instantiate(rockPrefab, handTransform.position, Quaternion.identity);
+                spawnedObject.transform.SetParent(handTransform);
+            }
+        }
     }
 }

@@ -66,8 +66,10 @@
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnPlayer.cs" />
+    <Compile Include="Assets\Scripts\Game\SpawnItems.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\Scripts\Game\PickItem.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MainMenuButtons.cs" />
@@ -77,8 +79,9 @@
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
-    <Compile Include="Assets\Scripts\Game\SpawnItems.cs" />
-    <Compile Include="Assets\Scripts\Game\PickItem.cs" />
+    <Compile Include="Assets\Scripts\Game\EventsList.cs" />
+    <Compile Include="Assets\Scripts\Game\PlayerAction.cs" />
+    <Compile Include="Assets\Items\Weapons\Rock\Rock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

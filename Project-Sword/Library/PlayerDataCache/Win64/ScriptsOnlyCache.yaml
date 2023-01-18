@@ -4,9 +4,11 @@ ScriptsOnlyBuild:
     - CameraLook
     - MainMenuButtons
     - PickItem
+    - PlayerAction
     - PlayerData
     - PlayerMovement
     - PlayerUI
+    - Rock
     - SpawnItems
     - SpawnPlayer
     - UI
@@ -253,25 +255,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6864}
     - Class: 114
-      Script: {instanceID: 8448}
+      Script: {instanceID: 6988}
     - Class: 114
-      Script: {instanceID: 8804}
+      Script: {instanceID: 8450}
     - Class: 114
-      Script: {instanceID: 8974}
+      Script: {instanceID: 8806}
     - Class: 114
-      Script: {instanceID: 10694}
+      Script: {instanceID: 8976}
     - Class: 114
-      Script: {instanceID: 11116}
+      Script: {instanceID: 9218}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 10698}
     - Class: 114
-      Script: {instanceID: 11602}
+      Script: {instanceID: 11120}
     - Class: 114
-      Script: {instanceID: 12328}
+      Script: {instanceID: 11212}
     - Class: 114
-      Script: {instanceID: 29730}
+      Script: {instanceID: 11606}
     - Class: 114
-      Script: {instanceID: 35054}
+      Script: {instanceID: 12332}
+    - Class: 114
+      Script: {instanceID: 34414}
+    - Class: 114
+      Script: {instanceID: 41268}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -400,83 +406,87 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6906}
     - Class: 114
-      Script: {instanceID: 7186}
+      Script: {instanceID: 7188}
     - Class: 114
-      Script: {instanceID: 7342}
+      Script: {instanceID: 7344}
     - Class: 114
-      Script: {instanceID: 7652}
+      Script: {instanceID: 7654}
     - Class: 114
-      Script: {instanceID: 7774}
+      Script: {instanceID: 7776}
     - Class: 114
-      Script: {instanceID: 8076}
+      Script: {instanceID: 8078}
     - Class: 114
-      Script: {instanceID: 8134}
+      Script: {instanceID: 8136}
     - Class: 114
-      Script: {instanceID: 8276}
+      Script: {instanceID: 8278}
     - Class: 114
-      Script: {instanceID: 8448}
+      Script: {instanceID: 8450}
     - Class: 114
-      Script: {instanceID: 8804}
+      Script: {instanceID: 8806}
     - Class: 114
-      Script: {instanceID: 8974}
+      Script: {instanceID: 8976}
     - Class: 114
-      Script: {instanceID: 9074}
+      Script: {instanceID: 9076}
     - Class: 114
-      Script: {instanceID: 9360}
+      Script: {instanceID: 9218}
     - Class: 114
-      Script: {instanceID: 9610}
+      Script: {instanceID: 9364}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9614}
     - Class: 114
-      Script: {instanceID: 9712}
+      Script: {instanceID: 9708}
     - Class: 114
-      Script: {instanceID: 9948}
+      Script: {instanceID: 9716}
     - Class: 114
-      Script: {instanceID: 10014}
+      Script: {instanceID: 9952}
     - Class: 114
-      Script: {instanceID: 10614}
+      Script: {instanceID: 10018}
     - Class: 114
-      Script: {instanceID: 10638}
+      Script: {instanceID: 10618}
     - Class: 114
-      Script: {instanceID: 10640}
+      Script: {instanceID: 10642}
     - Class: 114
-      Script: {instanceID: 10694}
+      Script: {instanceID: 10644}
     - Class: 114
-      Script: {instanceID: 10850}
+      Script: {instanceID: 10698}
     - Class: 114
-      Script: {instanceID: 10874}
+      Script: {instanceID: 10854}
     - Class: 114
-      Script: {instanceID: 11022}
+      Script: {instanceID: 10878}
     - Class: 114
-      Script: {instanceID: 11116}
+      Script: {instanceID: 11026}
     - Class: 114
-      Script: {instanceID: 11118}
+      Script: {instanceID: 11120}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11122}
     - Class: 114
-      Script: {instanceID: 11404}
+      Script: {instanceID: 11212}
     - Class: 114
-      Script: {instanceID: 11522}
+      Script: {instanceID: 11408}
     - Class: 114
-      Script: {instanceID: 11602}
+      Script: {instanceID: 11526}
     - Class: 114
-      Script: {instanceID: 11614}
+      Script: {instanceID: 11606}
     - Class: 114
-      Script: {instanceID: 11710}
+      Script: {instanceID: 11618}
     - Class: 114
-      Script: {instanceID: 11830}
+      Script: {instanceID: 11714}
     - Class: 114
-      Script: {instanceID: 12256}
+      Script: {instanceID: 11834}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12260}
     - Class: 114
-      Script: {instanceID: 12910}
+      Script: {instanceID: 12618}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 12914}
     - Class: 114
-      Script: {instanceID: 13296}
+      Script: {instanceID: 13070}
     - Class: 114
-      Script: {instanceID: 35054}
+      Script: {instanceID: 13300}
+    - Class: 114
+      Script: {instanceID: 34414}
+    - Class: 114
+      Script: {instanceID: 41268}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1566,6 +1576,12 @@ ScriptsOnlyBuild:
     className: DecalProjector
   - hash:
       serializedVersion: 2
+      Hash: 08f6b3a5371ef42f6ad9d113df98d390
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpawnItems
+  - hash:
+      serializedVersion: 2
       Hash: 2b53d93770b9036b2fd1c7854560bc69
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
@@ -2098,6 +2114,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayerQuitHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 9332dc5412699c0e2db7f279b07c8755
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PickItem
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -2838,16 +2860,22 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 08f6b3a5371ef42f6ad9d113df98d390
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: SpawnItems
+    className: EventsList
   - hash:
       serializedVersion: 2
-      Hash: dce93d256604922b672bea01ace067f2
+      Hash: 4e08c354256dce75de67579ae426b2f7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PickItem
+    className: PlayerAction
+  - hash:
+      serializedVersion: 2
+      Hash: a530eb064282301a6a863b33f4ef0547
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Rock
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
