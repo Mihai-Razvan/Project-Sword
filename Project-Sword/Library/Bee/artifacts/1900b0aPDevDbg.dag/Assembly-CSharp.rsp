@@ -354,7 +354,7 @@
 "Assets/Assets/Photon/PhotonLibs/WebSocket/SocketWebTcp.cs"
 "Assets/Assets/Photon/PhotonLibs/WebSocket/WebSocket.cs"
 "Assets/Assets/Photon/PhotonRealtime/Demos/DemoLoadBalancing/ConnectAndJoinRandomLb.cs"
-"Assets/Items/Weapons/Rock/Rock.cs"
+"Assets/Models/Weapons/Rock/Rock.cs"
 "Assets/Scripts/Game/CameraLook.cs"
 "Assets/Scripts/Game/EventsList.cs"
 "Assets/Scripts/Game/PickItem.cs"

@@ -69,7 +69,7 @@
     <Compile Include="Assets\Scripts\Game\SpawnPlayer.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnItems.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
-    <Compile Include="Assets\Items\Weapons\Rock\Rock.cs" />
+    <Compile Include="Assets\Models\Weapons\Rock\Rock.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\Scripts\Game\PickItem.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
