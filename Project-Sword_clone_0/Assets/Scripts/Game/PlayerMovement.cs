@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CharacterController controller;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckSize;
-    [SerializeField] LayerMask groundMask;   
+    [SerializeField] LayerMask groundMask;
     string movementState;
     [SerializeField] float walkingSpeed;
     [SerializeField] float runningSpeed;
@@ -19,13 +19,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float minimumVelocity;
     [SerializeField] float jumpForce;
     bool grounded;
+    [SerializeField] Animator animator;
 
 
     void Start()
     {
         photonView = this.gameObject.GetComponent<PhotonView>();
 
-        movementState = "WALKING";
+        movementState = "IDLE";
     }
 
     void Update()
@@ -40,6 +41,11 @@ public class PlayerMovement : MonoBehaviour
 
     void movement()
     {
+        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            movementState = "IDLE";
+        else
+            movementState = "WALKING";
+
         switch (movementState)
         {
             case "WALKING":
@@ -60,7 +66,11 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * walkingSpeed * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.LeftShift))
+        {
             movementState = "RUNNING";
+            animator.Play("Run");
+            Debug.Log("run");
+        }
     }
 
     void runningState()
@@ -72,7 +82,11 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * runningSpeed * Time.deltaTime);
 
         if (!Input.GetKey(KeyCode.LeftShift))
+        {
             movementState = "WALKING";
+            animator.Play("Run");
+            Debug.Log("run");
+        }
     }
 
     void verticalMovement()
