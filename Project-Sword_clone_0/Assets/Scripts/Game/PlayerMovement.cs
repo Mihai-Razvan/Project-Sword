@@ -5,14 +5,15 @@ using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
-    PhotonView view;
+    [SerializeField] PhotonView view;
     [SerializeField] PlayerData playerData;
 
     [SerializeField] CharacterController controller;
     [SerializeField] Transform groundCheck;
-    [SerializeField] float groundCheckSize;
+    [SerializeField] float groundCheckHeight;
+    [SerializeField] float groundCheckWidth;
     [SerializeField] LayerMask groundMask;
-    string movementState;                          //IDLE, RUNNING, JUMPING, MID-AIR, FALLING
+    string movementState;                          //IDLE, RUNNING, JUMPING, MID-AIR
     [SerializeField] float runningSpeed;
     [SerializeField] float midAirMovementSpeed;
     float velocity;
@@ -25,18 +26,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        view = this.gameObject.GetComponent<PhotonView>();
-
         movementState = "IDLE";
-        animator.SetBool("Running", false);
-        animator.SetBool("Jumping", false);
+        resetStates();
         animator.SetBool("Idle", true);
     }
 
     void Update()
     {
-        Debug.Log(movementState);
-      //  Debug.Log(isGrounded());
         handleAnimations();
 
         if (!view.IsMine)
@@ -61,9 +57,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case "MID-AIR":
                 midAirState();
-                break;
-            case "FALLING":
-                fallingState();
                 break;
         }
     }
@@ -94,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         inAirMovement();
 
-        if (animator.GetCurrentAnimatorStateInfo(0).length <= animator.GetCurrentAnimatorStateInfo(0).normalizedTime)         //jump start has ended
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)         //jump start has ended
             changeMovementState("MID-AIR");
     }
 
@@ -105,15 +98,12 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(this.gameObject.transform.position, -transform.up, out hit, Mathf.Infinity, groundMask))
             if (this.gameObject.transform.position.y - hit.point.y < fallEndHeight)
-                changeMovementState("FALLING");
-    }
-
-    void fallingState()
-    {
-        inAirMovement();
-
-        if (isGrounded() == true)
-            changeMovementState("IDLE");
+            {
+                if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+                    changeMovementState("IDLE");
+                else
+                    changeMovementState("RUNNING");
+            }
     }
 
     void jump()
@@ -144,7 +134,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded()
     {
-        return Physics.CheckSphere(groundCheck.position, groundCheckSize, groundMask); 
+        return Physics.CheckBox(groundCheck.position, new Vector3(groundCheckWidth, groundCheckHeight, groundCheckWidth), Quaternion.identity, groundMask);
+       // return Physics.CheckSphere(groundCheck.position, groundCheckSize, groundMask);
     }
 
     void handleAnimations()
@@ -158,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
         resetStates();
 
-        switch(state)
+        switch (state)
         {
             case "IDLE":
                 animator.SetBool("Idle", true);
@@ -171,9 +162,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case "MID-AIR":
                 animator.SetBool("Mid-Air", true);
-                break;
-            case "FALLING":
-                animator.SetBool("Falling", true);
                 break;
         }
     }
@@ -190,6 +178,5 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Running", false);
         animator.SetBool("Jumping", false);
         animator.SetBool("Mid-Air", false);
-        animator.SetBool("Falling", false);
     }
 }

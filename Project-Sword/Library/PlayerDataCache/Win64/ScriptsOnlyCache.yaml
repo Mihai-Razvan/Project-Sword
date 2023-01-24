@@ -31,6 +31,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.PhotonTransformViewClassic
     - Photon.Pun.PhotonView
     - Photon.Pun.ServerSettings
+    Unity.ProBuilder.Editor.dll:
+    - UnityEditor.ProBuilder.PolyShapeTool
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -239,6 +241,8 @@ ScriptsOnlyBuild:
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -1004,7 +1008,7 @@ ScriptsOnlyBuild:
     className: PlayerListView
   - hash:
       serializedVersion: 2
-      Hash: 6b8144cd59064adf68b6f34348cd92cf
+      Hash: 5ba4750ae281041905c9cb8700754fa5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
