@@ -6,11 +6,13 @@ ScriptsOnlyBuild:
     - PickItem
     - PlayerAction
     - PlayerData
+    - PlayerInventory
     - PlayerMovement
     - PlayerUI
     - Rock
     - SpawnItems
     - SpawnPlayer
+    - Sword_H
     - UI
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
@@ -31,8 +33,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.PhotonTransformViewClassic
     - Photon.Pun.PhotonView
     - Photon.Pun.ServerSettings
-    Unity.ProBuilder.Editor.dll:
-    - UnityEditor.ProBuilder.PolyShapeTool
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -296,6 +296,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11612}
     - Class: 114
       Script: {instanceID: 12338}
+    - Class: 114
+      Script: {instanceID: 34844}
+    - Class: 114
+      Script: {instanceID: 34860}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -507,6 +511,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13076}
     - Class: 114
       Script: {instanceID: 13306}
+    - Class: 114
+      Script: {instanceID: 34844}
+    - Class: 114
+      Script: {instanceID: 34860}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2896,6 +2904,30 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 3c5ac52e4f3ab1351ca71f2414b0c66c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerInventory
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Sword
+  - hash:
+      serializedVersion: 2
+      Hash: 978147ade61b01776e1b35be83d8a077
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Sword_H
+  - hash:
+      serializedVersion: 2
+      Hash: 85fed2aaeaabe0f5cab53375af6b05f7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ItemList
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
