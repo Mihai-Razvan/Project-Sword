@@ -22,7 +22,7 @@ public class PlayerData : MonoBehaviourPunCallbacks
     {
         dataHashTable["PlayerName"] = view.Owner.NickName;
         dataHashTable["PlayerHealth"] = 100;
-        dataHashTable["PlayerMovementState"] = "IDLE";
+        dataHashTable["PlayerState"] = "IDLE";
 
         PhotonNetwork.LocalPlayer.SetCustomProperties(dataHashTable);
     }
@@ -37,24 +37,23 @@ public class PlayerData : MonoBehaviourPunCallbacks
         return int.Parse(dataHashTable["PlayerHealth"].ToString());
     }
 
-    public string getPlayerMovementState()
-    {
-        if (view.Owner.CustomProperties.ContainsKey("PlayerMovementState"))
-            return view.Owner.CustomProperties["PlayerMovementState"].ToString();
-        else
-            return null;
-    }
-
     public void changePlayerHealth(int val)
     {
         dataHashTable["PlayerHealth"] = (int)dataHashTable["PlayerHealth"] + val;
         this.gameObject.transform.Find("Canvas").gameObject.GetComponent<PlayerUI>().updateUI();
     }
 
-
-    public void setPlayerMovementState(string val)
+    public string GetData(string key)
     {
-        dataHashTable["PlayerMovementState"] = val;
+        if (dataHashTable.ContainsKey(key))
+            return dataHashTable[key].ToString();
+        else
+            return null;
+    }
+
+    public void UpdateData(string key, string value)
+    {
+        dataHashTable[key] = value;
         PhotonNetwork.LocalPlayer.SetCustomProperties(dataHashTable);
     }
 }

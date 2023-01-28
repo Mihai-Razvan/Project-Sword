@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 393313130966445928}
   - component: {fileID: 393313130966445929}
   - component: {fileID: 1730794037620689837}
-  - component: {fileID: 393313130966445930}
   - component: {fileID: 9170668517873906375}
   - component: {fileID: 1605455116487745249}
   - component: {fileID: 6780967524368898548}
@@ -242,39 +241,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 6652646837801679752}
+  playerData: {fileID: 1605455116487745249}
   animator: {fileID: 3229905309913942279}
   IdleState: {fileID: 6632395373710523172}
   RunningState: {fileID: 2247569017365960980}
   JumpingState: {fileID: 3295330510311394253}
   MidAirState: {fileID: 1731533592867520126}
---- !u!114 &393313130966445930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393313130966445931}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8100358dcc4b16d4481aa86b43b4f386, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  view: {fileID: 6652646837801679752}
-  playerData: {fileID: 1605455116487745249}
-  controller: {fileID: 393313130966445929}
-  groundCheck: {fileID: 393313129378543093}
-  groundCheckHeight: 0.3
-  groundCheckWidth: 0.5
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  runningSpeed: 10
-  midAirMovementSpeed: 7
-  gravity: -20
-  minimumVelocity: -20
-  jumpForce: 9
-  animator: {fileID: 3229905309913942279}
-  fallEndHeight: 1
 --- !u!114 &9170668517873906375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,6 +627,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  fallEndHeight: 0.9
+  gravity: -20
+  minimumVelocity: -20
+  controller: {fileID: 393313130966445929}
 --- !u!114 &2247569017365960980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +651,9 @@ MonoBehaviour:
     m_Bits: 64
   controller: {fileID: 393313130966445929}
   runningSpeed: 10
+  fallEndHeight: 0.9
+  gravity: -20
+  minimumVelocity: -20
 --- !u!114 &3295330510311394253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +691,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  fallEndHeight: 1
+  fallEndHeight: 0.9
 --- !u!1 &1275882627402688764
 GameObject:
   m_ObjectHideFlags: 0

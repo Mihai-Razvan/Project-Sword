@@ -57,20 +57,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
+    <Compile Include="Assets\Scripts\Game\ItemList.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerUI.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\Scripts\Game\CameraLook.cs" />
+    <Compile Include="Assets\Scripts\Game\Player States\PlayerJumpingState.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\Game\EventsList.cs" />
-    <Compile Include="Assets\Scripts\Game\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Game\Player States\PlayerRunningState.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
+    <Compile Include="Assets\Scripts\Game\Player States\PlayerStateManager.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnPlayer.cs" />
+    <Compile Include="Assets\Scripts\Game\Player States\PlayerMidAirState.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnItems.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Models\Weapons\Rock\Rock.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\Models\Weapons\Sword\Sword_H.cs" />
+    <Compile Include="Assets\Scripts\Game\Player States\PlayerIdleState.cs" />
+    <Compile Include="Assets\Scripts\Game\PlayerInventory.cs" />
     <Compile Include="Assets\Scripts\Game\PickItem.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
@@ -80,12 +87,10 @@
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scripts\Game\UI.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scripts\Game\Player States\IPlayerBaseState.cs" />
+    <Compile Include="Assets\Models\Weapons\Sword\Sword.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
-    <Compile Include="Assets\Scripts\Game\ItemList.cs" />
-    <Compile Include="Assets\Models\Weapons\Sword\Sword.cs" />
-    <Compile Include="Assets\Models\Weapons\Sword\Sword_H.cs" />
-    <Compile Include="Assets\Scripts\Game\PlayerInventory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

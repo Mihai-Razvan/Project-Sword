@@ -9,9 +9,14 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
     [SerializeField] LayerMask groundMask;
     [SerializeField] CharacterController controller;
     [SerializeField] float runningSpeed;
+    [SerializeField] float fallEndHeight;          //the height over the ground at which mid air turns into falling
     float horizontalMovement;
     float verticalMovement;
     Vector3 move;
+    float velocity;
+    Vector3 fallAmount;
+    [SerializeField] float gravity;
+    [SerializeField] float minimumVelocity;
 
     public void EnterState(PlayerStateManager player, ArrayList data)
     {
@@ -30,7 +35,14 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
         if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0 && isGrounded() == true)
             player.SwitchState(player.IdleState);
         else if (isGrounded() == false)
-            player.SwitchState(player.MidAirState);
+        {
+            fall(player);
+            RaycastHit hit;         //we also do this check because there are a few frames while is is not grounded but is under the height so it changes back and forth between this state and jumping for a few tens of frames
+            if (Physics.Raycast(player.transform.position, -player.transform.up, out hit, Mathf.Infinity, groundMask) && player.transform.position.y - hit.point.y >= fallEndHeight)  
+                player.SwitchState(player.MidAirState);
+        }
+
+         
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded() == true)       //jump
             player.SwitchState(player.JumpingState);
@@ -51,5 +63,15 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
     bool isGrounded()
     {
         return Physics.CheckBox(groundCheck.position, new Vector3(groundCheckWidth, groundCheckHeight, groundCheckWidth), Quaternion.identity, groundMask);
+    }
+
+    void fall(PlayerStateManager player)        //we use this because when we change from midair to this state it will be still a lil bit in air and will not be grounded so we want to make it fully fall
+    {
+        velocity += gravity * Time.deltaTime;
+        if (velocity < minimumVelocity)
+            velocity = minimumVelocity;
+
+        fallAmount = player.transform.up * velocity;
+        controller.Move(fallAmount * Time.deltaTime);
     }
 }
