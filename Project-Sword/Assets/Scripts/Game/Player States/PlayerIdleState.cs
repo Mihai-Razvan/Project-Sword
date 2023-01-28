@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
 {
+    [SerializeField] PlayerInventory playerInventory;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckHeight;
     [SerializeField] float groundCheckWidth;
@@ -13,6 +14,11 @@ public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
     [SerializeField] float gravity;
     [SerializeField] float minimumVelocity;
     [SerializeField] CharacterController controller;
+
+    void Start()
+    {
+        playerInventory.onItemSelected += onItemChanged;
+    }
 
     public void EnterState(PlayerStateManager player, ArrayList data)
     {
@@ -64,5 +70,20 @@ public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
 
         fallAmount = player.transform.up * velocity;
         controller.Move(fallAmount * Time.deltaTime);
+    }
+
+    void onItemChanged(PlayerStateManager player)      //the player parameter is given from PlayerInventory
+    {
+        if (!(player.currentState is PlayerIdleState))
+            return;
+
+        switch(playerInventory.usedItem)
+        {
+            case PlayerInventory.Items.None:
+                break;
+            case PlayerInventory.Items.Sword:
+                player.SwitchState(player.SwordIdleState);
+                break;
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
 {
+    [SerializeField] PlayerInventory playerInventory;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckHeight;
     [SerializeField] float groundCheckWidth;
@@ -33,12 +34,22 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
         controller.Move(move * runningSpeed * Time.deltaTime);
 
         if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0 && isGrounded() == true)
-            player.SwitchState(player.IdleState);
+        {
+            switch(playerInventory.usedItem)
+            {
+                case PlayerInventory.Items.None:
+                    player.SwitchState(player.IdleState);
+                    break;
+                case PlayerInventory.Items.Sword:
+                    player.SwitchState(player.SwordIdleState);
+                    break;
+            }
+        }
         else if (isGrounded() == false)
         {
             fall(player);
             RaycastHit hit;         //we also do this check because there are a few frames while is is not grounded but is under the height so it changes back and forth between this state and jumping for a few tens of frames
-            if (Physics.Raycast(player.transform.position, -player.transform.up, out hit, Mathf.Infinity, groundMask) && player.transform.position.y - hit.point.y >= fallEndHeight)  
+            if (Physics.Raycast(player.transform.position, -player.transform.up, out hit, Mathf.Infinity, groundMask) && player.transform.position.y - hit.point.y >= fallEndHeight)
                 player.SwitchState(player.MidAirState);
         }
 

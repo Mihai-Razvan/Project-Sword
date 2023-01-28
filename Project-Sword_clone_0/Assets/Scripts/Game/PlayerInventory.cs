@@ -6,16 +6,25 @@ using Photon.Pun;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] PhotonView view;
+    [SerializeField] PlayerStateManager player;
     int[] itemCodes;
     int selectedSlot;
-    GameObject usedItem;
-    public delegate void OnItemSelected();       //when a new inventory slot from the inventory bar is selected
+    public delegate void OnItemSelected(PlayerStateManager v);       //when a new inventory slot from the inventory bar is selected
     public OnItemSelected onItemSelected;
+
+    public enum Items
+    {
+        None,
+        Sword
+    }
+    public Items usedItem;
+
 
     void Start()
     {
         itemCodes = new int[2] { 1, 0 };
         selectedSlot = 0;
+        usedItem = Items.None;
     }
 
 
@@ -24,35 +33,28 @@ public class PlayerInventory : MonoBehaviour
         if (!view.IsMine)
             return;
 
-        changeItem();
+        selectItem();
     }
 
-    void changeItem()
+    void selectItem()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            selectedSlot = 1;
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
             selectedSlot = 0;
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            selectedSlot = 1;
         else
             return;
 
-        destroyUsedItem();
-        onItemSelected();
-    }
+        switch(itemCodes[selectedSlot])
+        {
+            case 0:
+                usedItem = Items.None;
+                break;
+            case 1:
+                usedItem = Items.Sword;
+                break;
+        }
 
-    void destroyUsedItem()
-    {
-        if (usedItem != null)
-            Destroy(usedItem);
-    }
-
-    public int getUsedItemCode()
-    {
-        return itemCodes[selectedSlot];
-    }
-
-    public void setUsedItem(GameObject item)
-    {
-        usedItem = item;
+        onItemSelected(player);
     }
 }

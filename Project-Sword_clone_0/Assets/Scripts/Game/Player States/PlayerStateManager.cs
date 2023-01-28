@@ -11,11 +11,12 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] PlayerData playerData;
     [SerializeField] Animator animator;
 
-    IPlayerBaseState currentState;
+    public IPlayerBaseState currentState;
     [SerializeField] public PlayerIdleState IdleState;
     [SerializeField] public PlayerRunningState RunningState;
     [SerializeField] public PlayerJumpingState JumpingState;
     [SerializeField] public PlayerMidAirState MidAirState;
+    [SerializeField] public PlayerSwordIdleState SwordIdleState;
 
 
     void Start()
@@ -39,6 +40,7 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
         currentState = state;
         currentState.EnterState(this, null);
         REswitchState();
+        Debug.Log("State: " + currentState.GetType().Name);
     }
 
     public void SwitchState(IPlayerBaseState state, ArrayList data)   //used when we want to pass data between states
@@ -47,6 +49,7 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
         currentState = state;
         currentState.EnterState(this, data);
         REswitchState();
+        Debug.Log("State: " + currentState.GetType().Name);
     }
 
     void REswitchState()        //send a raise event when player state changes
@@ -99,6 +102,9 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 break;
             case "PlayerMidAirState":
                 animator.SetBool("Mid-Air", true);
+                break;
+            case "PlayerSwordIdleState":
+                animator.SetBool("Sword-Idle", true);
                 break;
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMidAirState : MonoBehaviour, IPlayerBaseState
 {
+    [SerializeField] PlayerInventory playerInventory;
     [SerializeField] float gravity;
     [SerializeField] float minimumVelocity;
     [SerializeField] float midAirMovementSpeed;
@@ -30,7 +31,17 @@ public class PlayerMidAirState : MonoBehaviour, IPlayerBaseState
             if (player.transform.position.y - hit.point.y < fallEndHeight)
             {
                 if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
-                    player.SwitchState(player.IdleState);
+                {
+                    switch (playerInventory.usedItem)
+                    {
+                        case PlayerInventory.Items.None:
+                            player.SwitchState(player.IdleState);
+                            break;
+                        case PlayerInventory.Items.Sword:
+                            player.SwitchState(player.SwordIdleState);
+                            break;
+                    }
+                }
                 else
                     player.SwitchState(player.RunningState);
             }
