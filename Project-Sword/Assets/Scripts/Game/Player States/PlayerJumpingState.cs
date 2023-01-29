@@ -8,7 +8,6 @@ public class PlayerJumpingState : MonoBehaviour, IPlayerBaseState
     [SerializeField] float minimumVelocity;
     [SerializeField] float midAirMovementSpeed;
     [SerializeField] CharacterController controller;
-    [SerializeField] Animator animator;
     float velocity;
     float horizontalMovement;
     float verticalMovement;
@@ -25,7 +24,7 @@ public class PlayerJumpingState : MonoBehaviour, IPlayerBaseState
     {
         inAirMovement(player);
 
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)         //jump start has ended
+        if (player.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)         //jump start has ended
         {
             ArrayList data = new ArrayList();
             data.Add("JumpingState");

@@ -56,6 +56,26 @@ public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
 
     }
 
+   /* void REspawnPrefab()        //send a raise event which spawns the sword prefab
+    {
+        object[] data = new object[]
+        {
+                view.ViewID, currentState.GetType().Name
+        };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions
+        {
+            Receivers = ReceiverGroup.Others,
+            CachingOption = EventCaching.AddToRoomCache
+        };
+
+        ExitGames.Client.Photon.SendOptions sendOptions = new ExitGames.Client.Photon.SendOptions
+        {
+            Reliability = true
+        };
+
+        PhotonNetwork.RaiseEvent(EventsList.SWITCH_PLAYER_STATE_EVENT, data, raiseEventOptions, sendOptions);
+    }*/
 
     /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -76,7 +96,7 @@ public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
 
     void setPrefab()
     {
-        sword = Instantiate(swordPrefab, hand.position, Quaternion.identity);
+        sword = Instantiate(swordPrefab, hand.position, Quaternion.Euler(hand.eulerAngles.x, hand.eulerAngles.y, hand.eulerAngles.z));
         sword.transform.SetParent(hand);
     }
 }
