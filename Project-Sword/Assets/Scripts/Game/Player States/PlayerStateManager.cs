@@ -17,7 +17,7 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [SerializeField] public PlayerJumpingState JumpingState;
     [SerializeField] public PlayerMidAirState MidAirState;
     [SerializeField] public PlayerSwordIdleState SwordIdleState;
-
+    [SerializeField] public PlayerSwordRunningState SwordRunningState;
 
     void Start()
     {
@@ -105,6 +105,9 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 break;
             case "PlayerSwordIdleState":
                 currentState = SwordIdleState;
+                break;
+            case "SwordRunningState":
+                currentState = SwordRunningState;
                 break;
         }
 

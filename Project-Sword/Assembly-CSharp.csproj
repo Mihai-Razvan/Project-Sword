@@ -62,6 +62,7 @@
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\Scripts\Game\CameraLook.cs" />
+    <Compile Include="Assets\Scripts\Game\Player States\PlayerSwordRunningState.cs" />
     <Compile Include="Assets\Scripts\Game\Player States\PlayerJumpingState.cs" />
     <Compile Include="Assets\Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\Game\EventsList.cs" />

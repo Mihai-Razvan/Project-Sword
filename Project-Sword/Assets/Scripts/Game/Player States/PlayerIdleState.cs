@@ -36,7 +36,18 @@ public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
     public void UpdateState(PlayerStateManager player)
     {
         if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && isGrounded() == true)
-            player.SwitchState(player.RunningState);
+        {
+            switch (playerInventory.usedItem)
+            {
+                case PlayerInventory.Items.None:
+                    player.SwitchState(player.RunningState);
+                    break;
+                case PlayerInventory.Items.Sword:
+                    player.SwitchState(player.SwordRunningState);
+                    break;
+            }
+        }
+
         else if (isGrounded() == false)
         {
             fall(player);
