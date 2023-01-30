@@ -12,11 +12,11 @@ ScriptsOnlyBuild:
     - PlayerMidAirState
     - PlayerRunningState
     - PlayerStateManager
+    - PlayerSwordIdleState
     - PlayerUI
     - Rock
     - SpawnItems
     - SpawnPlayer
-    - Sword_H
     - UI
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
@@ -88,8 +88,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -285,9 +287,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7458}
     - Class: 114
-      Script: {instanceID: 8462}
+      Script: {instanceID: 8412}
     - Class: 114
-      Script: {instanceID: 8642}
+      Script: {instanceID: 8464}
     - Class: 114
       Script: {instanceID: 8818}
     - Class: 114
@@ -462,9 +464,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8290}
     - Class: 114
-      Script: {instanceID: 8462}
+      Script: {instanceID: 8412}
     - Class: 114
-      Script: {instanceID: 8642}
+      Script: {instanceID: 8464}
     - Class: 114
       Script: {instanceID: 8818}
     - Class: 114
@@ -806,7 +808,7 @@ ScriptsOnlyBuild:
     className: ColorPalette
   - hash:
       serializedVersion: 2
-      Hash: 2453b608a52cc494cfc5801650542717
+      Hash: 0b7e654b30090cc265aa22d1bc6acdef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerJumpingState
@@ -1226,7 +1228,7 @@ ScriptsOnlyBuild:
     className: ColliderBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 5d871746a7b40a8ddd716a56729ba55b
+      Hash: 7d0114ae60b45094014237227ebdbbe5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerRunningState
@@ -1310,7 +1312,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerPanel
   - hash:
       serializedVersion: 2
-      Hash: 23f36b249154f3098acaed5135bb633b
+      Hash: 83603cd993064d7b5d0a6a99e4abee5c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerStateManager
@@ -1472,7 +1474,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 1a6f602e88b19285fe278e81b8505533
+      Hash: 114a96ec34b2a919f55843abb378adff
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMidAirState
@@ -2030,6 +2032,12 @@ ScriptsOnlyBuild:
     className: CurrentRoomIsVisibleToggle
   - hash:
       serializedVersion: 2
+      Hash: f551d5f1676a552a4a74f4b123d47a3f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerSwordIdleState
+  - hash:
+      serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -2078,12 +2086,6 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
-      Hash: 978147ade61b01776e1b35be83d8a077
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Sword_H
-  - hash:
-      serializedVersion: 2
       Hash: d7f7bc402888d42a0dbb080693e6863c
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.PunBasics
@@ -2126,7 +2128,7 @@ ScriptsOnlyBuild:
     className: ShadowCaster2D
   - hash:
       serializedVersion: 2
-      Hash: ce69233168db52394f6cac2fa45419f7
+      Hash: c79f81db8b370c2e6b1da223c5e131b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerIdleState
@@ -2162,7 +2164,7 @@ ScriptsOnlyBuild:
     className: UniversalAdditionalCameraData
   - hash:
       serializedVersion: 2
-      Hash: 3c5ac52e4f3ab1351ca71f2414b0c66c
+      Hash: 090566499774edee53460edb10c3a2a9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerInventory

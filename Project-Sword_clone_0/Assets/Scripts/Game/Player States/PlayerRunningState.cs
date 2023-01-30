@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+
 public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
 {
+    [SerializeField] PhotonView view;
     [SerializeField] PlayerInventory playerInventory;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckHeight;
@@ -21,8 +24,12 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
 
     public void EnterState(PlayerStateManager player, ArrayList data)
     {
-        ReadData(data);
         player.getAnimator().SetBool("Running", true);
+
+        if (!view.IsMine)
+            return;
+
+        ReadData(data);
     }
 
     public void UpdateState(PlayerStateManager player)
@@ -62,6 +69,9 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
     public void ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Running", false);
+
+        if (!view.IsMine)
+            return;
     }
 
     public void ReadData(ArrayList data)

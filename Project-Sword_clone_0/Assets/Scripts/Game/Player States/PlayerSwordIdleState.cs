@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
 {
+    [SerializeField] PhotonView view;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckHeight;
     [SerializeField] float groundCheckWidth;
@@ -20,11 +22,20 @@ public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
     [SerializeField] PlayerInventory playerInventory;
     GameObject sword;
 
+    void Start()
+    {
+        playerInventory.onItemSelected += onItemChanged;
+    }
+
     public void EnterState(PlayerStateManager player, ArrayList data)
     {
-        ReadData(data);
-        setPrefab();
         player.getAnimator().SetBool("Sword-Idle", true);
+        setPrefab();
+
+        if (!view.IsMine)
+            return;
+
+        ReadData(data);
     }
 
     public void UpdateState(PlayerStateManager player)
@@ -49,33 +60,15 @@ public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
     {
         player.getAnimator().SetBool("Sword-Idle", false);
         Destroy(sword);
+
+        if (!view.IsMine)
+            return;
     }
 
     public void ReadData(ArrayList data)
     {
 
     }
-
-   /* void REspawnPrefab()        //send a raise event which spawns the sword prefab
-    {
-        object[] data = new object[]
-        {
-                view.ViewID, currentState.GetType().Name
-        };
-
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions
-        {
-            Receivers = ReceiverGroup.Others,
-            CachingOption = EventCaching.AddToRoomCache
-        };
-
-        ExitGames.Client.Photon.SendOptions sendOptions = new ExitGames.Client.Photon.SendOptions
-        {
-            Reliability = true
-        };
-
-        PhotonNetwork.RaiseEvent(EventsList.SWITCH_PLAYER_STATE_EVENT, data, raiseEventOptions, sendOptions);
-    }*/
 
     /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,5 +91,20 @@ public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
     {
         sword = Instantiate(swordPrefab, hand.position, Quaternion.Euler(hand.eulerAngles.x, hand.eulerAngles.y, hand.eulerAngles.z));
         sword.transform.SetParent(hand);
+    }
+
+    void onItemChanged(PlayerStateManager player)      //the player parameter is given from PlayerInventory
+    {
+        if (!(player.currentState is PlayerSwordIdleState))
+            return;
+
+        switch (playerInventory.usedItem)
+        {
+            case PlayerInventory.Items.None:
+                player.SwitchState(player.IdleState);
+                break;
+            case PlayerInventory.Items.Sword:
+                break;
+        }
     }
 }

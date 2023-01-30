@@ -86,27 +86,29 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void SetAnimatorState(string state)        //called by onEvent; used to change player animations for character that is not yours! the animation handle for your own player character is done in state classes
     {
-        for (int i = 0; i < animator.parameterCount; i++)
-            animator.SetBool(animator.parameters[i].name, false);
+        if (currentState != null)   //currentState is null when join room because of cached events; you join room, the RE is received here before executing Start where currentState is set, so here will be null
+            currentState.ExitState(this);
 
         switch (state)
         {
             case "PlayerIdleState":
-                animator.SetBool("Idle", true);
+                currentState = IdleState;
                 break;
             case "PlayerRunningState":
-                animator.SetBool("Running", true);
+                currentState = RunningState;
                 break;
             case "PlayerJumpingState":
-                animator.SetBool("Jumping", true);
+                currentState = JumpingState;
                 break;
             case "PlayerMidAirState":
-                animator.SetBool("Mid-Air", true);
+                currentState = MidAirState;
                 break;
             case "PlayerSwordIdleState":
-                animator.SetBool("Sword-Idle", true);
+                currentState = SwordIdleState;
                 break;
         }
+
+        currentState.EnterState(this, null);
     }
 
     //////////////////////////////////////////////////////////////////////////////// 

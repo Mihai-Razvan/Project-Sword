@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+
 public class PlayerJumpingState : MonoBehaviour, IPlayerBaseState
 {
+    [SerializeField] PhotonView view;
     [SerializeField] float jumpForce;
     [SerializeField] float gravity;
     [SerializeField] float minimumVelocity;
@@ -15,8 +18,12 @@ public class PlayerJumpingState : MonoBehaviour, IPlayerBaseState
 
     public void EnterState(PlayerStateManager player, ArrayList data)
     {
-        ReadData(data);
         player.getAnimator().SetBool("Jumping", true);
+
+        if (!view.IsMine)
+            return;
+
+        ReadData(data);
         velocity = jumpForce;
     }
 
@@ -37,6 +44,9 @@ public class PlayerJumpingState : MonoBehaviour, IPlayerBaseState
     public void ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Jumping", false);
+
+        if (!view.IsMine)
+            return;
     }
 
     public void ReadData(ArrayList data)

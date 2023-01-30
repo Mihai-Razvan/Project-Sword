@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+
 public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
 {
+    [SerializeField] PhotonView view;
     [SerializeField] PlayerInventory playerInventory;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckHeight;
@@ -22,8 +25,12 @@ public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
 
     public void EnterState(PlayerStateManager player, ArrayList data)
     {
-        ReadData(data);
         player.getAnimator().SetBool("Idle", true);
+
+        if (!view.IsMine)
+            return;
+
+        ReadData(data);
     }
 
     public void UpdateState(PlayerStateManager player)
@@ -47,6 +54,9 @@ public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
     public void ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Idle", false);
+
+        if (!view.IsMine)
+            return;
     }
 
     public void ReadData(ArrayList data)

@@ -728,6 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1874d8dd3bf8548ac53287ed55f74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 6652646837801679752}
   playerInventory: {fileID: 9170668517873906375}
   groundCheck: {fileID: 393313129378543093}
   groundCheckHeight: 0.3
@@ -751,6 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05551d88bf315e546951a124ff067e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 6652646837801679752}
   playerInventory: {fileID: 9170668517873906375}
   groundCheck: {fileID: 393313129378543093}
   groundCheckHeight: 0.3
@@ -775,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6551719f3cbeaeb468891ce1ae14b175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 6652646837801679752}
   jumpForce: 9
   gravity: -20
   minimumVelocity: -20
@@ -792,6 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af0e1cdf232bd14b89ee91c8cdd5511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 6652646837801679752}
   playerInventory: {fileID: 9170668517873906375}
   gravity: -20
   minimumVelocity: -20
@@ -813,6 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210ef39debd15d347baa8694d6e0dc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 6652646837801679752}
   groundCheck: {fileID: 393313129378543093}
   groundCheckHeight: 0.3
   groundCheckWidth: 0.5
