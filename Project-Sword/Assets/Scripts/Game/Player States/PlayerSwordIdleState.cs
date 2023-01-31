@@ -16,26 +16,32 @@ public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
     [SerializeField] float gravity;
     [SerializeField] float minimumVelocity;
     [SerializeField] CharacterController controller;
+    [SerializeField] PlayerInventory playerInventory;
 
     [SerializeField] GameObject swordPrefab;
     [SerializeField] Transform hand;
-    [SerializeField] PlayerInventory playerInventory;
     GameObject sword;
+
 
     void Start()
     {
-        playerInventory.onItemSelected += onItemChanged;
-    }
-
-    public void EnterState(PlayerStateManager player, ArrayList data)
-    {
-        player.getAnimator().SetBool("Sword-Idle", true);
-        setPrefab();
-
         if (!view.IsMine)
             return;
 
+        playerInventory.onItemSelected += onItemChanged;
+    }
+
+    public void OW_EnterState(PlayerStateManager player, ArrayList data)
+    {
+        player.getAnimator().SetBool("Sword-Idle", true);
+        setPrefab();
         ReadData(data);
+    }
+
+    public void NT_EnterState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Sword-Idle", true);
+        setPrefab();
     }
 
     public void UpdateState(PlayerStateManager player)
@@ -67,13 +73,16 @@ public class PlayerSwordIdleState : MonoBehaviour, IPlayerBaseState
             player.SwitchState(player.JumpingState);
     }
 
-    public void ExitState(PlayerStateManager player)
+    public void OW_ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Sword-Idle", false);
         Destroy(sword);
+    }
 
-        if (!view.IsMine)
-            return;
+    public void NT_ExitState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Sword-Idle", false);
+        Destroy(sword);
     }
 
     public void ReadData(ArrayList data)

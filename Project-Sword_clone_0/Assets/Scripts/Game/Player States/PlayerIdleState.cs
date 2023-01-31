@@ -20,17 +20,22 @@ public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
 
     void Start()
     {
-        playerInventory.onItemSelected += onItemChanged;
-    }
-
-    public void EnterState(PlayerStateManager player, ArrayList data)
-    {
-        player.getAnimator().SetBool("Idle", true);
-
         if (!view.IsMine)
             return;
 
+        playerInventory.onItemSelected += onItemChanged;
+    }
+
+    public void OW_EnterState(PlayerStateManager player, ArrayList data)
+    {
+        player.getAnimator().SetBool("Idle", true);
         ReadData(data);
+    }
+
+
+    public void NT_EnterState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Idle", true);
     }
 
     public void UpdateState(PlayerStateManager player)
@@ -62,17 +67,19 @@ public class PlayerIdleState : MonoBehaviour, IPlayerBaseState
             player.SwitchState(player.JumpingState);
     }
 
-    public void ExitState(PlayerStateManager player)
+    public void OW_ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Idle", false);
+    }
 
-        if (!view.IsMine)
-            return;
+    public void NT_ExitState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Idle", false);
     }
 
     public void ReadData(ArrayList data)
     {
-
+      
     }
 
 

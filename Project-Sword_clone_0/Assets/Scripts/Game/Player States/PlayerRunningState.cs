@@ -22,14 +22,23 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
     [SerializeField] float gravity;
     [SerializeField] float minimumVelocity;
 
-    public void EnterState(PlayerStateManager player, ArrayList data)
+    void Start()
     {
-        player.getAnimator().SetBool("Running", true);
-
         if (!view.IsMine)
             return;
 
+        playerInventory.onItemSelected += onItemChanged;
+    }
+
+    public void OW_EnterState(PlayerStateManager player, ArrayList data)
+    {
+        player.getAnimator().SetBool("Running", true);
         ReadData(data);
+    }
+
+    public void NT_EnterState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Running", true);
     }
 
     public void UpdateState(PlayerStateManager player)
@@ -66,12 +75,14 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
             player.SwitchState(player.JumpingState);
     }
 
-    public void ExitState(PlayerStateManager player)
+    public void OW_ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Running", false);
+    }
 
-        if (!view.IsMine)
-            return;
+    public void NT_ExitState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Running", false);
     }
 
     public void ReadData(ArrayList data)
@@ -94,5 +105,20 @@ public class PlayerRunningState : MonoBehaviour, IPlayerBaseState
 
         fallAmount = player.transform.up * velocity;
         controller.Move(fallAmount * Time.deltaTime);
+    }
+
+    void onItemChanged(PlayerStateManager player)      //the player parameter is given from PlayerInventory
+    {
+        if (!(player.currentState is PlayerRunningState))
+            return;
+
+        switch (playerInventory.usedItem)
+        {
+            case PlayerInventory.Items.None:
+                break;
+            case PlayerInventory.Items.Sword:
+                player.SwitchState(player.SwordRunningState);
+                break;
+        }
     }
 }

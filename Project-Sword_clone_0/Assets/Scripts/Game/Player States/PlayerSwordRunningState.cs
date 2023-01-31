@@ -28,18 +28,23 @@ public class PlayerSwordRunningState : MonoBehaviour, IPlayerBaseState
 
     void Start()
     {
-        playerInventory.onItemSelected += onItemChanged;
-    }
-
-    public void EnterState(PlayerStateManager player, ArrayList data)
-    {
-        player.getAnimator().SetBool("Sword-Running", true);
-        setPrefab();
-
         if (!view.IsMine)
             return;
 
+        playerInventory.onItemSelected += onItemChanged;
+    }
+
+    public void OW_EnterState(PlayerStateManager player, ArrayList data)
+    {
+        player.getAnimator().SetBool("Sword-Running", true);
+        setPrefab();
         ReadData(data);
+    }
+
+    public void NT_EnterState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Sword-Running", true);
+        setPrefab();
     }
 
     public void UpdateState(PlayerStateManager player)
@@ -65,7 +70,7 @@ public class PlayerSwordRunningState : MonoBehaviour, IPlayerBaseState
         else if (isGrounded() == false)
         {
             fall(player);
-            RaycastHit hit;         //we also do this check because there are a few frames while is is not grounded but is under the height so it changes back and forth between this state and jumping for a few tens of frames
+            RaycastHit hit;      //we also do this check because there are a few frames while is is not grounded but is under the height so it changes back and forth between this state and jumping for a few tens of frames
             if (Physics.Raycast(player.transform.position, -player.transform.up, out hit, Mathf.Infinity, groundMask) && player.transform.position.y - hit.point.y >= fallEndHeight)
                 player.SwitchState(player.MidAirState);
         }
@@ -76,13 +81,16 @@ public class PlayerSwordRunningState : MonoBehaviour, IPlayerBaseState
             player.SwitchState(player.JumpingState);
     }
 
-    public void ExitState(PlayerStateManager player)
+    public void OW_ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Sword-Running", false);
         Destroy(sword);
+    }
 
-        if (!view.IsMine)
-            return;
+    public void NT_ExitState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Sword-Running", false);
+        Destroy(sword);
     }
 
     public void ReadData(ArrayList data)

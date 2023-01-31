@@ -15,23 +15,29 @@ public class PlayerJumpingState : MonoBehaviour, IPlayerBaseState
     float horizontalMovement;
     float verticalMovement;
     Vector3 fall;
+    float timeSinceJumpStart;
+    [SerializeField] AnimationClip jumpAnimClip;
 
-    public void EnterState(PlayerStateManager player, ArrayList data)
+    public void OW_EnterState(PlayerStateManager player, ArrayList data)
     {
-        player.getAnimator().SetBool("Jumping", true);
-
-        if (!view.IsMine)
-            return;
-
         ReadData(data);
         velocity = jumpForce;
+        timeSinceJumpStart = 0;
+        player.getAnimator().SetBool("Jumping", true);
     }
+
+    public void NT_EnterState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Jumping", true);
+    }
+
 
     public void UpdateState(PlayerStateManager player)
     {
         inAirMovement(player);
+        timeSinceJumpStart += Time.deltaTime;
 
-        if (player.getAnimator().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)         //jump start has ended
+        if (timeSinceJumpStart >= jumpAnimClip.length)
         {
             ArrayList data = new ArrayList();
             data.Add("JumpingState");
@@ -41,12 +47,14 @@ public class PlayerJumpingState : MonoBehaviour, IPlayerBaseState
         }
     }
 
-    public void ExitState(PlayerStateManager player)
+    public void OW_ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Jumping", false);
+    }
 
-        if (!view.IsMine)
-            return;
+    public void NT_ExitState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Jumping", false);
     }
 
     public void ReadData(ArrayList data)

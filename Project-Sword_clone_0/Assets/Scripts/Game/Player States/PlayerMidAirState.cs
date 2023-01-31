@@ -18,15 +18,17 @@ public class PlayerMidAirState : MonoBehaviour, IPlayerBaseState
     float verticalMovement;
     Vector3 fall;
 
-    public void EnterState(PlayerStateManager player, ArrayList data)
+    public void OW_EnterState(PlayerStateManager player, ArrayList data)
+    {
+        ReadData(data);
+        player.getAnimator().SetBool("Mid-Air", true);
+    }
+
+    public void NT_EnterState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Mid-Air", true);
-
-        if (!view.IsMine)
-            return;
-
-        ReadData(data);
     }
+
 
     public void UpdateState(PlayerStateManager player)
     {
@@ -63,12 +65,14 @@ public class PlayerMidAirState : MonoBehaviour, IPlayerBaseState
             }
     }
 
-    public void ExitState(PlayerStateManager player)
+    public void OW_ExitState(PlayerStateManager player)
     {
         player.getAnimator().SetBool("Mid-Air", false);
+    }
 
-        if (!view.IsMine)
-            return;
+    public void NT_ExitState(PlayerStateManager player)
+    {
+        player.getAnimator().SetBool("Mid-Air", false);
     }
 
     public void ReadData(ArrayList data)

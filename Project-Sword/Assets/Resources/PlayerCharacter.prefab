@@ -54,13 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393313129378543094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.29999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 393313130966445928}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &393313130804172106
 GameObject:
@@ -90,13 +90,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393313130804172106}
   m_LocalRotation: {x: -0.095966846, y: 0, z: 0, w: 0.9953846}
-  m_LocalPosition: {x: -0, y: 1.962, z: 0.613}
+  m_LocalPosition: {x: -0, y: 1.944, z: 0.418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8968208378934133489}
+  m_Children: []
   m_Father: {fileID: 393313130966445928}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &393313130804172104
 Camera:
@@ -208,6 +207,7 @@ GameObject:
   - component: {fileID: 393313130966445928}
   - component: {fileID: 393313130966445929}
   - component: {fileID: 1730794037620689837}
+  - component: {fileID: 8345885279218862500}
   - component: {fileID: 9170668517873906375}
   - component: {fileID: 1605455116487745249}
   - component: {fileID: 6780967524368898548}
@@ -234,8 +234,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8391208244569289515}
-  - {fileID: 393313129378543093}
   - {fileID: 393313130804172111}
+  - {fileID: 393313129378543093}
   - {fileID: 6629680223445061893}
   - {fileID: 3957051454851187759}
   m_Father: {fileID: 0}
@@ -280,6 +280,19 @@ MonoBehaviour:
   MidAirState: {fileID: 1731533592867520126}
   SwordIdleState: {fileID: 9146880034506059558}
   SwordRunningState: {fileID: 6910240649695690847}
+--- !u!114 &8345885279218862500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393313130966445931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ca174f2e65e924aae3978de9366299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 6652646837801679752}
 --- !u!114 &9170668517873906375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +327,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393313130966445931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8113e2572b39a24d8d715bc4f71e20a, type: 3}
   m_Name: 
@@ -326,7 +339,7 @@ MonoBehaviour:
   playerCamera: {fileID: 393313130804172104}
   detectionCapsuleLength: 5
   detectionCapsuleRadius: 0.5
-  handTransform: {fileID: 8968208378934133489}
+  handTransform: {fileID: 0}
   rockPrefab: {fileID: 4761830331957876040, guid: f03a7349f9daef844aa61535a508b1b5, type: 3}
 --- !u!114 &8243535840066044680
 MonoBehaviour:
@@ -335,13 +348,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393313130966445931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a405258f3c8b80e42b595e20d6a41341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   view: {fileID: 6652646837801679752}
-  hand: {fileID: 5941642246116745714}
+  hand: {fileID: 0}
   throwRockPrefab: {fileID: 4761830331957876040, guid: fb1fcf6eb6732c749be6fa1a45413514, type: 3}
 --- !u!114 &6652646837801679752
 MonoBehaviour:
@@ -785,6 +798,7 @@ MonoBehaviour:
   minimumVelocity: -20
   midAirMovementSpeed: 7
   controller: {fileID: 393313130966445929}
+  jumpAnimClip: {fileID: 7400000, guid: 20b0c6c8fc5b2b44a82684a6e77c6c0d, type: 2}
 --- !u!114 &1731533592867520126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,9 +844,9 @@ MonoBehaviour:
   gravity: -20
   minimumVelocity: -20
   controller: {fileID: 393313130966445929}
-  swordPrefab: {fileID: 1671743150891408415, guid: 4ed7c586a0c81fa4f99ff4e87b9deb1e, type: 3}
-  hand: {fileID: 1065411356851202639}
   playerInventory: {fileID: 9170668517873906375}
+  swordPrefab: {fileID: 1671743150891408415, guid: 8ece160764d78f048bd34c06eaf9fd1c, type: 3}
+  hand: {fileID: 1065411356851202639}
 --- !u!114 &6910240649695690847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,7 +872,7 @@ MonoBehaviour:
   fallEndHeight: 0.9
   gravity: -20
   minimumVelocity: -20
-  swordPrefab: {fileID: 1671743150891408415, guid: 8b68cf7b989ffc44b904c50633351ec7, type: 3}
+  swordPrefab: {fileID: 1671743150891408415, guid: 17e623f0538d6794ea0e42dbf3b076a1, type: 3}
   hand: {fileID: 8161688290955554695}
 --- !u!1 &1223263462429605610
 GameObject:
@@ -2043,37 +2057,6 @@ Transform:
   m_Children:
   - {fileID: 4874917007333528591}
   m_Father: {fileID: 5467418129426248109}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5941642246116745714
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8968208378934133489}
-  m_Layer: 0
-  m_Name: Hand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8968208378934133489
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5941642246116745714}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.61, z: 1.509}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 393313130804172111}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5952691405152850756

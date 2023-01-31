@@ -22,7 +22,7 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
     void Start()
     {
         currentState = IdleState;
-        currentState.EnterState(this, null);
+        currentState.OW_EnterState(this, null);
         REswitchState();
     }
 
@@ -30,24 +30,24 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (!view.IsMine)
             return;
-
+            
         currentState.UpdateState(this);
     }
 
     public void SwitchState(IPlayerBaseState state)
     {
-        currentState.ExitState(this);
+        currentState.OW_ExitState(this);
         currentState = state;
-        currentState.EnterState(this, null);
+        currentState.OW_EnterState(this, null);
         REswitchState();
         Debug.Log("State: " + currentState.GetType().Name);
     }
 
     public void SwitchState(IPlayerBaseState state, ArrayList data)   //used when we want to pass data between states
     {
-        currentState.ExitState(this);
+        currentState.OW_ExitState(this);
         currentState = state;
-        currentState.EnterState(this, data);
+        currentState.OW_EnterState(this, data);
         REswitchState();
         Debug.Log("State: " + currentState.GetType().Name);
     }
@@ -80,14 +80,14 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
             object[] data = (object[])eventData.CustomData;
 
             if (PhotonView.Find((int)data[0]) != null && (int)data[0] == view.ViewID)       //player could leave during event propagation so we need to make this check
-                SetAnimatorState(data[1].ToString());
+                SetOthersState(data[1].ToString());
         }
     }
 
-    void SetAnimatorState(string state)        //called by onEvent; used to change player animations for character that is not yours! the animation handle for your own player character is done in state classes
+    void SetOthersState(string state)        //called by onEvent; used to change OTHER players states for character that is not yours!
     {
         if (currentState != null)   //currentState is null when join room because of cached events; you join room, the RE is received here before executing Start where currentState is set, so here will be null
-            currentState.ExitState(this);
+            currentState.NT_ExitState(this);
 
         switch (state)
         {
@@ -106,12 +106,12 @@ public class PlayerStateManager : MonoBehaviourPunCallbacks, IOnEventCallback
             case "PlayerSwordIdleState":
                 currentState = SwordIdleState;
                 break;
-            case "SwordRunningState":
+            case "PlayerSwordRunningState":
                 currentState = SwordRunningState;
                 break;
         }
 
-        currentState.EnterState(this, null);
+        currentState.NT_EnterState(this);
     }
 
     //////////////////////////////////////////////////////////////////////////////// 
